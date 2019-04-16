@@ -20,12 +20,12 @@ export default class Index extends Component {
         const { addTodo } = this.props;
         addTodo(this.newTodo);
     }
-    renderList (list, completedShow) {
-        
-        list.length > 0 && list.map((item, index) => {
-            const visible = completedShow ? item.completed : !item.completed;
-            return !item.deleted && visible && (
-                <div className='item' key={index}>
+    
+    renderList (list, completeVisible) {
+        return list.length > 0 && list.map((item, index) => {
+            const visible = completeVisible ? item.completed : !item.completed; 
+            return (!item.deleted && visible) && (
+                <div className='item'  key={index}>
                     <div className='item-name'>{item.name}</div>
                     <div className='item-completed' onClick={this.completed.bind(this, index)}>完成</div>
                     <div className='item-completed' onClick={this.deleted.bind(this, index)}>删除</div>
@@ -33,8 +33,7 @@ export default class Index extends Component {
             )
         })
     }
-    
-   
+
     render () {
         const { list = [] } = this.props;
         // debugger
@@ -46,12 +45,10 @@ export default class Index extends Component {
                         </div>
                         <div className='add-btn' onClick={this.addTodo}>添加</div>
                     </div>
-                    <div>
-                        <div>待办事项</div>
-                        {this.renderList(list, false)}
-                        <div>已办事项</div>
-                        {this.renderList(list, true)}
-                    </div>
+                    <div>待办事项</div>
+                    {this.renderList(list, false)}
+                    <div>已办事项</div>
+                    {this.renderList(list, true)}
                 </div>
         )
     } 
