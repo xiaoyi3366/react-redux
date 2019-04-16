@@ -47,10 +47,10 @@ export default class Index extends Component {
                         <div className='add-btn' onClick={this.addTodo}>添加</div>
                     </div>
                     <div>
-                        {/* <div>待办事项</div> */}
-                        {/* {this.renderList(list, false)} */}
-                        {/* <div>已办事项</div> */}
-                        {/* {this.renderList(list, true)} */}
+                        <div>待办事项</div>
+                        {this.renderList(list, false)}
+                        <div>已办事项</div>
+                        {this.renderList(list, true)}
                     </div>
                 </div>
         )
